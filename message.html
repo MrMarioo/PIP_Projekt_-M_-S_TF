@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<script src="http://kronos.tu.kielce.pl/uml/vendor/base64.js"></script>
+	<script src="http://kronos.tu.kielce.pl/uml/vendor/rawdeflate.js"></script>
+	<script src="http://kronos.tu.kielce.pl/uml/vendor/prism.js" type="text/javascript"></script>
+	<script src="http://kronos.tu.kielce.pl/uml/js/plantuml-drawer.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="http://kronos.tu.kielce.pl/uml/vendor/prism.css" data-noprefix />
+	<link rel="stylesheet" href="http://kronos.tu.kielce.pl/uml/css/raport.css" data-noprefix />
+		
+	</style>
+</head>
+<body>
+
+	<h1>Inżynieria Programowania</h1>
+	<h2>Temat projektu: Zarzadzanie produkcja wozów strażackich</h2>
+
+	<h3>Autorzy</h3>
+
+	<ul>
+		<li>Szymon Śmiglarski</li>
+		<li>Mariusz Śmistek </li>
+		<li>Filip Tosnowiec</li>
+	</ul>
+
+	<article id="description-polish">
+		<h4>Opis systemu</h4>
+		<p class="guidelines">W naszej aplikacji, wóz strażacki składa sie min z podwozia, silnika które sa zamawiane od producentów (MAN, Mercedes-Benz, Renault, Volvo, IVECO), firma która reprezentuje nasza aplikacja, tworzy zabudowe dla takiego wozu, która jest konfigurowalna przez zamawiajacego (np Gminne OSP). Każdy wóz posiada swoja specyfikacje:</p>
+		<li class="guidelines"> Dane techniczne: Typ, Ogumienie, Kategoria, Naped, Silnik, Moc Silnika</li>
+		<li class="guidelines"> Kabina: Ilość miejsc, uklad miejsc</li>
+		<li class="guidelines"> Zabudowa: Materia l, Ilość Skrytek, Zamkniecie, Wnetrze, Oświetlenie</li>
+		<li class="guidelines"> Układ wodno-pianowy: Typ Autopompy, Zbiornik na wode, zbiornik na środek pianotwórczy, inne elementy układu wodnego</li>
+		<li class="guidelines"> Wyposażenie: Podstawowe, Dodatkowe</li>
+	</article>
+
+	
+	<article id="description-english">
+		<h4>System description</h4>
+		<p class="guidelines">In our app, fire rescure vechicles consist of chassis, engine, which are ordered from producents (MAN, Mercedes-Benz, Renault, Volvo, IVECO), company which represents our applications, creates car constructions for emergency truck, which is configurobable for purchaser. Every emergency car has its own specificaton:</p>
+		<li class="guidelines"> Technic data: Type, Rear axel types, Category, Drive, Engine, Engine Power</li>
+		<li class="guidelines"> Cabine: number of seats, their positioning</li>
+		<li class="guidelines"> Zabudowa: Material, Number of Storages, Lockers, Interior, Lighti</li>
+		<li class="guidelines"> Water-foam System: Truck mounted pump, Water tank, Foam concentrate Tank, Other elements of water system</li>
+		<li class="guidelines"> Equipment: Basic, Additonal</li>
+	</article>
+	
+	<article id="dictionary-polish">
+		<h4>Słownik pojęć</h4>
+		<p class="guidelines">Lista wykorzystywanych pojęć wraz z opisem</p>
+		<ul>
+			<li>
+				<strong>Kontrahent:</strong>
+				Zlecajacy wykonanie wozu strażackiego, o określonych przez niego parametrach. Może on zgłaszać również usterki samochodu, na przykład w ramach gwarancji.
+			</li>
+			<li>
+				<strong> Użytkownik wozu strażackiego (Strażak):</strong>
+				Użytkujacy wóz strażacki, zgłaszajacy problemy związane z wozem strażackim
+			</li>
+			<li>
+				<strong> Serwisanci:</strong>
+				Otrzymują zgłoszenia dotyczace awarii zgłaszanych przez użytkowników. Zajmują się naprawą usterek.
+			</li>
+			<li>
+				<strong> Pracownik Fizyczny:</strong>
+				Zajmuje się tworzeniem zabudowy, do zamówionego wozu strażackiego
+			</li>
+			<li>
+				<strong> Lakiernik:</strong>
+				Zajmuje się lakierowaniem samochodu strażackiego
+			</li>
+			<li>
+				<strong> Dział handlowy:</strong>
+				Zarzadzaja kupnem podwozi oraz innych części, a także przyjmuja zlecenie od kontrahentów
+			</li>
+			<li>
+				<strong> Zgłoszenie:</strong>
+				Informacja otrzymana przez serwisanta od użytkownika wozu strażackiego o jego ewentualnych usterkach.	
+			</li>
+			<li>
+				<strong> Zlecenie:</strong>
+				Dostarczone do działu handlowego zamówienie na wykonanie wozu strażackiego. 
+			</li>
+			<li>
+				<strong> Awaria:</strong>
+				Uszkodzenie wozu strażackiego wymagające napraw. 
+			</li>
+			<li>
+				<strong> Historia wozu strażackiego:</strong>
+				Wykaz wszystkich uszkodzeń danego wozu strażackiego oraz jego wyjazdy (np. na akcje) 
+			</li>
+		</ul>
+	</article>
+
+	<article id="dictionary-english">
+		<h4>Dictionary</h4>
+		<p class="guidelines">List of used terms with description</p>
+		<ul>
+			<li>
+				<strong>Contract:</strong>
+				Person who commisions building of fire truck with choosen parameters.
+			</li>
+			<li>
+				<strong> User of fire truck (Firefighter):</strong>
+				User of fire truck, person reporting problems with fire truck.
+			</li>
+			<li>
+				<strong> Service technictian:</strong>
+				They receive reports about malfunction reported by users.
+			</li>
+			<li>
+				<strong> Sales departament:</strong>
+				Administrates purchases of chassis, also receives order from contract.
+			</li>
+			<li>
+				<strong> Report:</strong>	
+				Information recived by the service techniciatian from the user of fire truck and his possible damages.
+			</li>
+			<li>
+				<strong> Order:</strong>
+				Report sent to sales departamen with the prescription to build fire truck. 
+			</li>
+			<li>
+				<strong> Malfunction:</strong>
+				Damaged fire truck that needs to be repaired. 
+			</li>
+			<li>
+				<strong> Fire truck history:</strong>
+				List of every damage taken by specific fire truck and his actions. 
+			</li>
+		</ul>
+	</article>
+	
+	<article id="user-stories-polish">	
+		<h4>User Stories (po polsku)</h4>
+		<p class="guidelines">User stories w języku polskim</p>
+		<p>Jako <strong>Użytkownik/Kontrahent</strong> chciałbym mieć dostęp do historii mojego wozu w aplikacji </p> 
+		<p>Jako <strong>Pracownik</strong> chce tworzyć zabudowę wozu strażackiegom więc potrzebuje dostępu do dostępnych części w magazynie </p>
+		<p>Jako <strong>Lakiernik</strong> chce widzieć historie wykonanych prac lakierniczych </p>
+		<p>Jako <strong>Kontrahent</strong> chcę spersonalizować mój wóz strażacki, aby móc go kupić.</p>
+		<p>Jako <strong>Kontrahent</strong> chcę zamówić wóz strażacki, więc wybieram opcje zamów.</p>
+		<p>Jako <strong>Użytkownik</strong> zgłaszam awarię do serwisanta</p>
+		<p>Jako <strong>Serwisant</strong> podejmuję się naprawy, zleconej przez użytkownika, awarii</p>
+		<p>Jako <strong>Pracownik</strong> chcę otrzymywać zlecenia od kontrahentów </p>
+		<p>Jako <strong>Dział Handlowy</strong> zamawiam potrzebne częśći do zleconego pojazdu przez <strong>Kontrahenta</strong></strong> </p>
+		<p>Jako <strong>Dział Handlowy</strong> zamieszczam ofertę wykonania pojazdu w celu wygrania przetargu </p>
+		<p>Jako <strong>Pracownik fizyczny</strong> odbieram zlecenie wykonania wozu strażackiego </p>
+		<p>Jako <strong>Pracownik fizyczny</strong> informuję dział handlowy o braku części potrzebnych do produkcji pojazdu </p>
+		<p>Jako <strong>Pracownik fizyczny</strong> informuję o zakończeniu budowy wozu </p>
+		<p>Jako <strong>Lakiernik</strong> chce widzieć wozy wymagające lakierowania </p>
+		<p>Jako <strong>Lakiernik</strong> chce zgłosić brak farby do działu handlowego </p>
+	</article>
+
+	
+	<article id="user-stories-english">
+		<h4>User Stories (in english)</h4>
+		<p class="guidelines">User stories in english</p>
+		<p>As a <strong>User/Contract</strong> I would like to have a acces to history of my fire truck in application </p> 
+		<p>As a <strong>Worker</strong> I would like to create construction of fire truck, so I need a access to parts in the storage</p>
+		<p>As a <strong>Varnisher</strong> I would like to see the history of paint job done </p>
+		<p>As a <strong>Contract</strong> I would like to personalise my fire truck, so I can buy it</p>
+		<p>As a <strong>Contract</strong> I would like to order my fire truck, so I choose the order option.</p>
+		<p>As a <strong>User</strong> I report the damages to the service technitian</p>
+		<p>As a <strong>Service technitian</strong> I take on repairs order by the user</p>
+		<p>As a <strong>Worker</strong> I would like to receive orders from Contracts </p>
+		<p>As a <strong>Sales departament</strong> I order specific parts customised for <strong>Contract's</strong> fire truck </p>
+		<p>As a <strong>Physical worker</strong> I receive order to build a fire truck </p>
+		<p>As a <strong>Physical worker</strong> I inform the sales departament about the abscence of needed parts to build a fire truck</p>
+		<p>As a <strong>Physical worker</strong> I inform about finished build of fire truck </p>
+		<p>As a <strong>Varnisher</strong> I would like to see fire trucks that needs to be painted </p>
+		<p>As a <strong>Varnisher</strong> I would like to report a lack of paint to sales departament </p>
+	</article>
+
+	
+	<article id="use-case-diagram">
+		<h4>Diagram przypadków użycia</h4>
+		<p class ="uml">
+			@startuml
+			left to right direction
+
+			Dział_Handlowy -- ( Decyzja o przyjęciu zamówienia)
+			Dział_Handlowy -- (Zamawia czesci)
+
+			Kontrahent -- (Znajduje marke wozu)
+			Kontrahent -- (Personalizuje wóz)
+			
+
+
+			(Znajduje marke wozu) -- (Składa zamówienie) 
+			(Personalizuje wóz) -- (Składa zamówienie) 
+			(Składa zamówienie)  --> Dział_Handlowy
+			(Znajduje marke wozu)  ..> (Personalizuje wóz) : <<extend>> 
+
+			@enduml
+		</p>
+		<p class ="uml">
+			@startuml
+			left to right direction
+
+			Użytkownik -- (Zgłasza awarię)
+			Kontrahent -- (Zgłasza serwis)
+			Serwisant --> (Diagnozuje pojazd)
+			Serwisant --> (Konserwuje pojazd)
+			Serwisant --> (Zgłasza brak części)
+
+			Dział_Handlowy --> (Decyzja o zamówieniu)
+
+			(Zgłasza awarię) --> (Kontrahent)
+			(Zgłasza serwis) --> (Serwisant)
+			(Serwisant) --> (Naprawia pojazd)
+			(Konserwuje pojazd) ..> (Oddaje pojazd) : <<extend>>
+			(Diagnozuje pojazd) ..> (Oddaje pojazd) : <<extend>>
+			(Naprawia pojazd) ..> (Oddaje pojazd) : <<extend>>
+			(Zgłasza brak części) ..> Dział_Handlowy : <<extend>>
+			
+			@enduml
+		</p>
+		<p class ="uml">
+			@startuml
+			left to right direction
+
+			Pracownik -- (Pobiera część potrzebną do tworzenia wozu)
+			Pracownik -- (Zgłasza brak części do działu handlowego)
+
+			Lakiernik -- (Wykonuje lakierowanie elementu)
+			Lakiernik -- (Zgłasza brak farby)
+			Lakiernik -- (Sprawdz wozy do lakierowania)
+			
+			Dział_Handlowy -- (Zamawia potrzebną część)
+
+			(Zgłasza brak części do działu handlowego) --> Dział_Handlowy
+			(Zgłasza brak farby) --> Dział_Handlowy
+			@enduml
+		</p>
+	</article>
+	
+	<article id="use-case-scenarios-polish">
+		<h4>Scenariusze przypadków użycia</h4>
+		<p class="guidelines">Scenariusze przypadków użycia w języku polskim. Do wygenerowania tabeli scenariusza należy wykorzystać generator dostępny <a href="http://kronos.tu.kielce.pl/uml/scenarios.html">tutaj</a>.</p>
+		<!-- Zgloszenie serwisu -->
+		<table border="1">
+			<tbody><tr>
+				<th>Author name:</th>
+				<td style="width: 15cm;">
+					Mariusz, Filip, Szymon
+				</td>
+			</tr>
+			<tr>
+				<th>Author surname:</th>
+				<td style="width: 15cm;">
+					Śmistek, Tosnowiec, Śmiglarski
+				</td>
+			</tr>
+			<tr>
+				<th>Author group:</th>
+				<td style="width: 15cm;">
+					3ID12B
+				</td>
+			</tr>
+			<tr>
+				<th>Subject:</th>
+				<td style="width: 15cm;">
+					System zarządzania produkcją wozów strażackich
+				</td>
+			</tr>
+			<tr>
+				<th>Use Case:</th>
+				<td style="width: 15cm;">
+					Zgłaszam awarię wozu
+				</td>
+			</tr>
+			<tr>
+				<th>Language:</th>
+				<td style="width: 15cm;">
+					Polish
+				</td>
+			</tr>
+			<tr>
+				<th>Preconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Użytkownik musi być zarejestrowany i zalogowany
+						</li>
+						<li>
+							Pojazd musi zostać kupiony przez aplikację
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Postconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Użytkownik zgłosił awarię pojazdu
+						</li>
+						<li>
+							Kontrahent przekazał awarię do działu handlowego
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Actors:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Użytkownik
+						</li>
+						<li>
+							Kontrahent
+						</li>
+						<li>
+							Serwisant
+						</li>
+						<li>
+							Dział handlowy
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Main flow:</th>
+				<td style="width: 15cm;">
+					<ol>
+						<li>
+							Użytkownik/Kontrahent zgłasza awarię
+						</li>
+						<li>
+							System przekazuje informacje o serwisie do firmy
+						</li>
+						<li>
+							Serwisant diagnozuje pojazd i zgłasza listę części do zamówienia
+						</li>
+						<li>
+							Dział handlowy zamawia części do naprawy
+						</li>
+						<li>
+							Serwisant naprawia pojazd/konserwuje go
+						</li>
+						<li>
+							Serwisant oddaje pojazd użytkownikowi/kontrahentowi
+						</li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<th>Alternate flow:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							<span class="number"></span>
+							<span class="condition">4</span>
+							<span class="reaction-additional">Nie zamawia części, bo pojazd tego nie wymaga</span>
+							<span class="reaction-type">GOTO</span>
+							<span class="reaction-goto">5</span>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody></table>
+		
+		<!-- Zamówienie pojazdu -->
+		<table border="1">
+			<tbody><tr>
+				<th>Author name:</th>
+				<td style="width: 15cm;">
+					Mariusz, Filip, Szymon
+				</td>
+			</tr>
+			<tr>
+				<th>Author surname:</th>
+				<td style="width: 15cm;">
+					Śmistek, Tosnowiec, Śmiglarski
+				</td>
+			</tr>
+			<tr>
+				<th>Author group:</th>
+				<td style="width: 15cm;">
+					3ID12B
+				</td>
+			</tr>
+			<tr>
+				<th>Subject:</th>
+				<td style="width: 15cm;">
+					System zarządzania produkcją wozów strażackich
+				</td>
+			</tr>
+			<tr>
+				<th>Use Case:</th>
+				<td style="width: 15cm;">
+					Zamów Wóz
+				</td>
+			</tr>
+			<tr>
+				<th>Language:</th>
+				<td style="width: 15cm;">
+					Polish
+				</td>
+			</tr>
+			<tr>
+				<th>Preconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Użytkownik, musi być zarejestrowany i zalogowany
+						</li>
+						<li>
+							Dział handlowy musi zaakceptować zamówienie
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Postconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Zamówiono nowy pojazd
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Actors:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Kontrahent
+						</li>
+						<li>
+							Dział Handlowy
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Main flow:</th>
+				<td style="width: 15cm;">
+					<ol>
+						<li>
+							Kontrahent wybiera opcję Zamów
+						</li>
+						<li>
+							System wyświetla możliwe podwozia 
+						</li>
+						<li>
+							Kontrahent  wybiera podwozie z dostępnych producentów
+						</li>
+						<li>
+							System wyświetla możliwe dostępne konfiguracje
+						</li>
+						<li>
+							Kontrahent personalizuje konfigurację wozu
+						</li>
+						<li>
+							Kontrahent wysyła swoje zamówienie
+						</li>
+						<li>
+							System dokonuje walidacji zamówienia
+						</li>
+						<li>
+							Następnie Dział Handlowy dokonuje walidacji zamówienia
+						</li>
+						<li>
+							System dodaje nowe zamówienie do realizacji
+						</li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<th>Alternate flow:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							<span class="number">7</span>
+							<span class="condition">Wybrana konfiguracja jest niepoprawna</span>
+							<span class="reaction-additional"></span>
+							<span class="reaction-type">GOTO</span>
+							<span class="reaction-goto">4</span>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody></table>
+		
+		<table border="1">
+			<tbody><tr>
+				<th>Authors name:</th>
+				<td style="width: 15cm;">
+					Mariusz, Filip, Szymon
+				</td>
+			</tr>
+			<tr>
+				<th>Authors surname:</th>
+				<td style="width: 15cm;">
+					Śmistek, Tosnowiec, Świderski
+				</td>
+			</tr>
+			<tr>
+				<th>Author group:</th>
+				<td style="width: 15cm;">
+					Group nr 1
+				</td>
+			</tr>
+			<tr>
+				<th>Subject:</th>
+				<td style="width: 15cm;">
+					System zarządzania produkcją wozów strażackich
+				</td>
+			</tr>
+			<tr>
+				<th>Use Case:</th>
+				<td style="width: 15cm;">
+					Dodaj książkę
+				</td>
+			</tr>
+			<tr>
+				<th>Language:</th>
+				<td style="width: 15cm;">
+					Polish
+				</td>
+			</tr>
+			<tr>
+				<th>Preconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Użytkownik musi być zalogowany do systemu
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Postconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Dodano nową książkę
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Actors:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Pracownik
+						</li>
+						<li>
+							Kierownik
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Main flow:</th>
+				<td style="width: 15cm;">
+					<ol>
+						<li>
+							Użytkownik wybiera opcję dodaj nową książkę
+						</li>
+						<li>
+							System wyświetla formularz dodania nowej książki
+						</li>
+						<li>
+							Użytkownik wypełnia formularz dodania nowej książki
+						</li>
+						<li>
+							Użytkownik wysyła formularz
+						</li>
+						<li>
+							System dokonuje walidacji formularza
+						</li>
+						<li>
+							System dodaje nową książkę
+						</li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<th>Alternate flow:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							<span class="number">5</span>
+							<span class="condition">Książka o podanym tytule już istnieje. </span>
+							<span class="reaction-type">GOTO</span>
+							<span class="reaction-goto">2</span>
+						</li>
+						<li>
+							<span class="number">5</span>
+							<span class="condition">Nie wszystkie wymagane pola zostały wpisane</span>
+							<span class="reaction-type">GOTO</span>
+							<span class="reaction-goto">2</span>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody></table>
+
+		<table border="1">
+			<tbody><tr>
+				<th>Author name:</th>
+				<td style="width: 15cm;">
+					Adam
+				</td>
+			</tr>
+			<tr>
+				<th>Author surname:</th>
+				<td style="width: 15cm;">
+					Krechowicz
+				</td>
+			</tr>
+			<tr>
+				<th>Author group:</th>
+				<td style="width: 15cm;">
+					Group 1
+				</td>
+			</tr>
+			<tr>
+				<th>Subject:</th>
+				<td style="width: 15cm;">
+					System zarządzania biblioteką
+				</td>
+			</tr>
+			<tr>
+				<th>Use Case:</th>
+				<td style="width: 15cm;">
+					Dodaj książkę
+				</td>
+			</tr>
+			<tr>
+				<th>Language:</th>
+				<td style="width: 15cm;">
+					Polish
+				</td>
+			</tr>
+			<tr>
+				<th>Preconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Użytkownik musi być zalogowany do systemu
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Postconditions:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Dodano nową książkę
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Actors:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							Pracownik
+						</li>
+						<li>
+							Kierownik
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Main flow:</th>
+				<td style="width: 15cm;">
+					<ol>
+						<li>
+							Użytkownik wybiera opcję dodaj nową książkę
+						</li>
+						<li>
+							System wyświetla formularz dodania nowej książki
+						</li>
+						<li>
+							Użytkownik wypełnia formularz dodania nowej książki
+						</li>
+						<li>
+							Użytkownik wysyła formularz
+						</li>
+						<li>
+							System dokonuje walidacji formularza
+						</li>
+						<li>
+							System dodaje nową książkę
+						</li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<th>Alternate flow:</th>
+				<td style="width: 15cm;">
+					<ul>
+						<li>
+							<span class="number">5</span>
+							<span class="condition">Książka o podanym tytule już istnieje. </span>
+							<span class="reaction-type">GOTO</span>
+							<span class="reaction-goto">2</span>
+						</li>
+						<li>
+							<span class="number">5</span>
+							<span class="condition">Nie wszystkie wymagane pola zostały wpisane</span>
+							<span class="reaction-type">GOTO</span>
+							<span class="reaction-goto">2</span>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody></table>
+	</article>
+
+	<table border="1">
+		<tbody><tr>
+			<th>Author name:</th>
+			<td style="width: 15cm;">
+				Mariusz, Filip, Szymon
+			</td>
+		</tr>
+		<tr>
+			<th>Author surname:</th>
+			<td style="width: 15cm;">
+				Śmistek, Tosnowiec, Śmiglarski
+			</td>
+		</tr>
+		<tr>
+			<th>Author group:</th>
+			<td style="width: 15cm;">
+				3ID12B
+			</td>
+		</tr>
+		<tr>
+			<th>Subject:</th>
+			<td style="width: 15cm;">
+				System zarządzania produkcją wozów strażackich
+			</td>
+		</tr>
+		<tr>
+			<th>Use Case:</th>
+			<td style="width: 15cm;">
+				Wykonaj wóz strażacki
+			</td>
+		</tr>
+		<tr>
+			<th>Language:</th>
+			<td style="width: 15cm;">
+				Polish
+			</td>
+		</tr>
+		<tr>
+			<th>Preconditions:</th>
+			<td style="width: 15cm;">
+				<ul>
+					<li>
+						Pracownik musi być zalogowany do systemu
+					</li>
+					<li>
+						W systemie znajdują się zlecenia
+					</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Postconditions:</th>
+			<td style="width: 15cm;">
+				<ul>
+					<li>
+						Wykonano wóz strażacki
+					</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Actors:</th>
+			<td style="width: 15cm;">
+				<ul>
+					<li>
+						Pracownik 
+					</li>
+					<li>
+						Dział Handlowy
+					</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Main flow:</th>
+			<td style="width: 15cm;">
+				<ol>
+					<li>
+						Pracownik wybiera opcję budowa wozu
+					</li>
+					<li>
+						System wyświetla możliwe do wykonania zlecenia
+					</li>
+					<li>
+						Pracownik wybiera jedno z możliwych zleceń
+					</li>
+					<li>
+						System sprawdza dostępność części do budowy danego wozu
+					</li>
+					<li>
+						System wysyła informację pracownikowi o dostępnie do części
+					</li>
+					<li>
+						Pracownik wybiera opcję rozpocznij budowę wozu
+					</li>
+					<li>
+						System oznacza budowę wozu  jako rozpoczętą
+					</li>
+				</ol>
+			</td>
+		</tr>
+		<tr>
+			<th>Alternate flow:</th>
+			<td style="width: 15cm;">
+				<ul>
+					<li>
+						<span class="number">5</span>
+						<span class="condition">Brak części</span>
+						<span class="reaction-additional">Pracownik informuje dział handlowy o potrzebie ich kupna</span>
+						<span class="reaction-type">GOTO</span>
+						<span class="reaction-goto">5.1</span>
+					</li>
+					<li>
+						<span class="number">5.1</span>
+						<span class="condition">Brak części</span>
+						<span class="reaction-additional">Dział handlowy wykonuje zamówienie konkretnych części</span>
+						<span class="reaction-type">GOTO</span>
+						<span class="reaction-goto">5</span>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody></table>
+	
+
+	
+	<article id="use-case-scenarios-english">
+		<h4>Use case scenarios</h4>
+		<p class="guidelines">Use case scenarios in english</p>
+	</article>
+
+	
+	<article id="activity-diagrams">
+		<h4>Diagramy aktywności</h4>
+
+		<section>
+			<h5>Dodaj książkę</h5>
+			<p class="author">Adam Krechowicz</p>
+			<p class="uml">
+				@startuml
+
+				start
+				:Add new book;
+				repeat
+				repeat
+				:Show form;
+				:Filling form;
+				:Sending form;
+				:Form validation;
+				repeat while (Book exists?) is (yes)
+				->no;
+				repeat while (Form complete?) is (no)
+				->yes;
+				:Add book;
+				stop
+
+				@enduml
+			</p>
+		</section>
+		<section>
+			<h5>Dodaj książkę</h5>
+			<p class="author">Adam Krechowicz</p>
+			<p class="uml">
+				@startuml
+
+				start
+				:Add new book;
+				repeat
+				repeat
+				:Show form;
+				:Filling form;
+				:Sending form;
+				:Form validation;
+				repeat while (Book exists?) is (yes)
+				->no;
+				repeat while (Form complete?) is (no)
+				->yes;
+				:Add book;
+				stop
+
+				@enduml
+			</p>
+		</section>
+	</article>
+
+	
+	<article id="class-diagram">
+		<h4>Diagram klas</h4>
+		<p class="uml">
+			@startuml
+			skinparam classAttributeIconSize 0
+			class Book{
+			+title
+			+author
+
+			-validate()
+			+borrow()
+			+giveBack()
+			{static} findBooks()
+		}
+
+		abstract class User
+
+		User <|-- Reader
+		User <|-- Worker
+		Worker <|-- Manager
+
+		Reader ..> Book
+		Reader *-- ReadersCard
+
+		@enduml
+		</p>
+	</article>
+
+	
+	<article>
+		<h4>Wzorce projektowe</h4>
+		<section class="pattern">
+			<h5>Singleton</h5>
+			<p class="author">Adam Krechowicz</p>
+			<h6>Problem</h6>
+			<div class="pattern-problem">
+				<p class="guidelines">Opis problemu, jaki będzie rozwiązany za pomocą wzorca, który występuje w projekcie</p>
+			</div>
+			<h6>Rozwiązanie</h6>
+			<div class="pattern-description">
+				<p class="guidelines">Opis zaproponowanego rozwiązania wynikającego z charakterystyki wzorca. W tym punkcie należy zarówno opisać wzorzec zastosowany wzorzec projektowy jak równizeż umotywować dlaczego pasuje on do rozwiązania zadanego problemu</p>
+			</div>
+			<h6>Diagram klas</h6>
+			<p class="uml pattern-diagram">
+				@startuml
+				skinparam classAttributeIconSize 0
+
+				class Singleton{
+				{static} -instance
+
+				-Singleton()
+				{static} +getInstance()
+			}
+
+			Singleton ..> Singleton : << create >>
+
+			@enduml
+			</p>
+			<h6>Kod wzorca</h6>
+			<pre class="pattern-code"><code class="lang-java">
+class Singleton{
+
+	public void Test(){
+
+	}
+
+	public static void main(String args[]){
+
+	}
+}
+			</code></pre>
+			<h6>Kod testowy wzorca</h6>
+			<pre class="pattern-test-code"><code class="lang-java">
+class SingletonTest{
+
+	public void Test(){
+
+	}
+
+	@Test
+	public void testSingleton(){
+	}
+}
+
+			</code></pre>
+		</section>
+</article>
+
+	
+	<article id="sequence-diagrams">
+		<h4>Diagramy sekwencji</h4>
+		<section>
+			<h5>Nazwa diagramu</h5>
+		<p class="author">Adam Krechowicz</p>
+		<p class="uml">
+			@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+		</p>
+	</section>
+	</article>
+
+</body>
+</html> 
