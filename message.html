@@ -156,7 +156,9 @@
 		<p>Jako <strong>Pracownik fizyczny</strong> informuję o zakończeniu budowy wozu </p>
 		<p>Jako <strong>Lakiernik</strong> chce widzieć wozy wymagające lakierowania </p>
 		<p>Jako <strong>Lakiernik</strong> chce zgłosić brak farby do działu handlowego </p>
-	</article>
+		<p>Jako <strong>Kierownik</strong> widze wszystkich pracowników fizycznych, i mogę im przydzielać zadania </p>
+		<p>Jako <strong>Kierownik</strong> widzi  wszystkich pracowników fizycznych, i może sprawdzić czy są wykonują swoją prace</p>
+		<p>Jako <strong>Kierownik</strong> widzi wszystkie wozy, i może zmieniać ich status</p>
 
 	
 	<article id="user-stories-english">
@@ -237,6 +239,24 @@
 
 			(Zgłasza brak części do działu handlowego) --> Dział_Handlowy
 			(Zgłasza brak farby) --> Dział_Handlowy
+			@enduml
+		</p>
+		<p class ="uml">
+			@startuml
+			left to right direction
+
+			Kierownik -- (Wybiera pracownika)
+			Kierownik -- (Wybiera wóz strażacki)
+
+			Pracownik -- (wykonuje zadanie)
+			Pracownik -- (Zgłasza niemożnośc wykonania)
+
+			(Wybiera pracownika) -- (przydziela zadanie)
+			(Wybiera pracownika) -- (Anuluje zadanie)
+			(Wybiera wóz strażacki) -- (Zmiana statusu wozu)
+			(przydziela zadanie) ..> Pracownik : <<extend>>
+			(Anuluje zadanie) ..> Pracownik : <<extend>>
+
 			@enduml
 		</p>
 	</article>
