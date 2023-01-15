@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "app",
+      "type": "com.example.test.CustomProperties",
+      "sourceType": "com.example.test.CustomProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.host-name",
+      "type": "java.lang.String",
+      "sourceType": "com.example.test.CustomProperties"
+    },
+    {
+      "name": "app.login",
+      "type": "java.lang.String",
+      "sourceType": "com.example.test.CustomProperties"
+    },
+    {
+      "name": "app.password",
+      "type": "java.lang.String",
+      "sourceType": "com.example.test.CustomProperties"
+    }
+  ],
+  "hints": []
+}

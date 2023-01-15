@@ -1,0 +1,56 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>
+        Login
+    </title>
+</head>
+<body>
+<form>
+    Login: <input type="text" id="login"><br>
+    Hasło: <input type="password" id="haslo"><br>
+    <button type="button" onclick="sendRequest()">Wyślij żądanie</button>
+</form>
+
+<div id="response"></div>
+
+<script>
+    function sendRequest() {
+        const login = document.getElementById('login').value;
+        const haslo = document.getElementById('haslo').value;
+
+        fetch('http://localhost:8081/Registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({login: login, haslo: haslo})
+        })
+            .then(response => response.json())
+            .then(data => {
+                var it = data.i;
+                var wynik="";
+                var br = document.createElement("br");
+                for (var i = 1; i <= it; i++) {
+                    var imieK = "Imie"+i;
+                    var nazwiskoK = "Nazwisko"+i;
+                    var imie = data[imieK];
+                    var nazwisko = data[nazwiskoK];
+                    wynik += `Twoje imie to: ${imie}, a nazwisko to ${nazwisko}<br>`
+
+                }
+                document.getElementById('response').innerHTML = wynik;
+
+
+            });
+        console.log(login);
+    }
+
+</script>
+
+<footer class="footing">
+    <div><strong>Autorzy:</strong> Szymon Śmiglarski, Mariusz Śmistek, Filip Tosnowiec</div>
+</footer>
+
+</body>
+</html>
