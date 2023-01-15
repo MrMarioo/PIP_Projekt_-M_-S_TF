@@ -1,10 +1,10 @@
 Drop table Oceny;
 Drop table Awaria;
-Drop table Zadanie;
+Drop table zadanie;
 Drop table Pojazd;
 Drop table Specyfikacja;
 Drop table Zlecenie;
-Drop table Parament;
+Drop table Parametr;
 Drop table Ustawienia;
 Drop table Kontrahent;
 Drop table Pracownik;
@@ -17,7 +17,7 @@ Drop table RodzajPojazdu;
 CREATE TABLE RodzajPojazdu (
     IDRodzajPojazdu NUMERIC PRIMARY KEY,
     Nazwa NVARCHAR2(50),
-    Opis NVARCHAR2(50)
+    Opis NVARCHAR2(250)
 );
 
 CREATE TABLE RodzajParametru (
@@ -43,7 +43,7 @@ CREATE TABLE Uzytkownik (
     Imie NVARCHAR2(50),
     Nazwisko NVARCHAR2(50),
     TypKontaID NUMERIC,
-    Login NVARCHAR2(50),
+    Login NVARCHAR2(50) UNIQUE,
     Haslo NVARCHAR2(50),
     CONSTRAINT UzytTypKonta_FK FOREIGN KEY (TypKontaID) REFERENCES TypKonta(IDTypKonta)
 );
@@ -72,14 +72,14 @@ CREATE TABLE Ustawienia (
     CONSTRAINT UstawUzyt_FK FOREIGN KEY (UzytkownikID) REFERENCES Uzytkownik(IDUzytkownika)
 );
 
-CREATE TABLE Parament (
+CREATE TABLE Parametr (
     IDParametru NUMERIC PRIMARY KEY,
     RodzajParametruID NUMERIC,
     Nazwa NVARCHAR2(50),
-    Opis NVARCHAR2(50),
+    Opis NVARCHAR2(250),
     Cena NVARCHAR2(50),
     Marka NVARCHAR2(50),
-    Zdjecie NVARCHAR2(50),
+    Zdjecie NVARCHAR2(250),
     CONSTRAINT ParamRodzPar_FK FOREIGN KEY (RodzajParametruID) REFERENCES RodzajParametru(IDRodzajuParametru)
 );
 
@@ -98,12 +98,13 @@ CREATE TABLE Zlecenie (
 CREATE TABLE Specyfikacja (
     ParametrID NUMERIC,
     ZlecenieID NUMERIC,
-    CONSTRAINT SpecParam FOREIGN KEY (ParametrID) REFERENCES Parament(IDParametru),
+    CONSTRAINT SpecParam FOREIGN KEY (ParametrID) REFERENCES Parametr(IDParametru),
     CONSTRAINT SpecZlec FOREIGN KEY (ZlecenieID) REFERENCES Zlecenie(IDZlecenia)
 );
 
 CREATE TABLE Pojazd (
     IDPojazdu NUMERIC PRIMARY KEY,
+    RodzajID NUMERIC,
     ZlecenieID NUMERIC,
     Status NVARCHAR2(50),
     CONSTRAINT PojZlec_FK FOREIGN KEY (ZlecenieID) REFERENCES Zlecenie(IDZlecenia)
