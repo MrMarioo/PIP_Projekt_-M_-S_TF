@@ -8,30 +8,59 @@ import java.sql.SQLException;
 
 public class Zlecenie {
     int id;
-    int uzytkownikID;
+    Kontrahent kontrahent;
     String data;
     String adres;
     String status;
     double cena;
-    int rodzajPojazduID;
+    RodzajPojazdu rodzajPojazdu;
 
-    public Zlecenie(int id, int uzytkownikID, String data, String adres, String status, double cena, int rodzajPojazduID) {
+    public Zlecenie(int id, Kontrahent kontrahent, String data, String adres, String status, double cena, RodzajPojazdu rodzajPojazdu) {
         this.id = id;
-        this.uzytkownikID = uzytkownikID;
+        this.kontrahent = kontrahent;
         this.data = data;
         this.adres = adres;
         this.status = status;
         this.cena = cena;
-        this.rodzajPojazduID = rodzajPojazduID;
+        this.rodzajPojazdu = rodzajPojazdu;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Kontrahent getKontrahent() {
+        return kontrahent;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public String getAdres() {
+        return adres;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public double getCena() {
+        return cena;
+    }
+
+    public RodzajPojazdu getRodzajPojazdu() {
+        return rodzajPojazdu;
     }
 
     @SneakyThrows
-    public void setUzytkownikID(int uzytkownikID) {
-        this.uzytkownikID = uzytkownikID;
-        String sql = "UPDATE ZLECENIE SET uzytkownikID = \'"+uzytkownikID+"\' WHERE IDZLECENIA = "+id;
+    public void setKontrahent(Kontrahent kontrahent) {
+        this.kontrahent = kontrahent;
+        String sql = "UPDATE ZLECENIE SET uzytkownikID = \'"+kontrahent.id+"\' WHERE IDZLECENIA = "+id;
         System.out.println(sql);
         bazaUpdate(sql);
     }
+
     @SneakyThrows
     public void setData(String data) {
         this.data = data;
@@ -52,6 +81,8 @@ public class Zlecenie {
         String sql = "UPDATE ZLECENIE SET status = \'"+status+"\' WHERE IDZLECENIA = "+id;
         System.out.println(sql);
         bazaUpdate(sql);
+        if(status=="Zaakceptowano");
+
     }
     @SneakyThrows
     public void setCena(double cena) {
@@ -61,13 +92,14 @@ public class Zlecenie {
         bazaUpdate(sql);
     }
 
-    @SneakyThrows
-    public void setRodzajPojazduID(int rodzajPojazduID) {
-        this.rodzajPojazduID = rodzajPojazduID;
+    /*@SneakyThrows
+    public void setRodzajPojazduID(String rodzajPojazdu) {
+        this.rodzajPojazdu = rodzajPojazdu;
         String sql = "UPDATE ZLECENIE SET RODZAJPOJAZDUID = \'"+rodzajPojazduID+"\' WHERE IDZLECENIA = "+id;
         System.out.println(sql);
         bazaUpdate(sql);
-    }
+    }*/
+    //do przerobienia na pobranie id za pomoca nazwy i update w bazie
 
     @SneakyThrows
     private String bazaUpdate(String sql) throws SQLException, JSONException {
@@ -78,12 +110,12 @@ public class Zlecenie {
     @Override
     public String toString() {
         return "{\"zlecenieid\":\"" + id + '\"' +
-                ", \"uzytkownikID\":\"" + uzytkownikID + '\"' +
+                ", \"kontrahent\":\"" + kontrahent + '\"' +
                 ", \"data\":\"" + data + '\"' +
                 ", \"adres\":\"" + adres + '\"' +
                 ", \"status\":\"" + status + '\"' +
                 ", \"cena\":\"" + cena + '\"' +
-                ", \"rodzajPojazduID\":\"" + rodzajPojazduID + '\"' +
+                ", \"rodzajPojazdu\":\"" + rodzajPojazdu + '\"' +
                 '}';
     }
 }
