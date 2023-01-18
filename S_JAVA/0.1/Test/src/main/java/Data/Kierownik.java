@@ -60,11 +60,13 @@ public class Kierownik {
 
     @Override
     public String toString() {
-        return "{\"pracownikid\":\"" + id + '\"' +
-                ", \"imie\":\"" + imie + '\"' +
-                ", \"nazwisko\":\"" + nazwisko + '\"' +
-                ", \"typ\":\"" + typ + '\"' +
-                ", \"status\":\"" + status + '\"' +
-                '}';
+        if(this!=null)
+            return "{\"pracownikid\":\"" + id + '\"' +
+                    ", \"imie\":\"" + imie + '\"' +
+                    ", \"nazwisko\":\"" + nazwisko + '\"' +
+                    ", \"typ\":\"" + typ + '\"' +
+                    ", \"status\":\"" + status + '\"' +
+                    '}';
+        else return "brak";
     }
 }

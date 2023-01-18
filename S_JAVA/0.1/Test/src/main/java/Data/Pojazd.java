@@ -8,13 +8,15 @@ import java.sql.SQLException;
 
 public class Pojazd {
     int id;
+    Kontrahent kontrahent;
     Zlecenie zlecenie;
     String status;
 
-    public Pojazd(int id, Zlecenie zlecenie, String status) {
+    public Pojazd(int id, Zlecenie zlecenie, String status, Kontrahent kontrahent) {
         this.id = id;
         this.zlecenie = zlecenie;
         this.status = status;
+        this.kontrahent = kontrahent;
     }
     @SneakyThrows
     public void setZlecenie(Zlecenie zlecenie) {

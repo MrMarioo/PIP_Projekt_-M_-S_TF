@@ -22,11 +22,19 @@ public class Pracownik {
         this.typ = typ;//PRACOWNIK
         this.status = status;//PRACOWNIK
     }
+    public Pracownik(int id, String imie, String nazwisko, String typ, String status) {
+        this.id = id;
+        this.kierownik = new Kierownik(0,"Brak","Brak","Brak", "Brak");;//PRACOWNIK
+        this.imie = imie;//UZYTKOWNIK
+        this.nazwisko = nazwisko;//UZYTKOWNIK
+        this.typ = typ;//PRACOWNIK
+        this.status = status;//PRACOWNIK
+    }
     @SneakyThrows
     public void setKierownikID(Kierownik kierownik) {
         this.kierownik = kierownik;
-        String sql = "UPDATE PRACOWNIK SET KIEROWNIKID = \'"+kierownik+"\' WHERE IDPRACOWNIKA = "+id;
-        //System.out.println(sql);
+        String sql = "UPDATE PRACOWNIK SET KIEROWNIKID = \'"+kierownik.id+"\' WHERE IDPRACOWNIKA = "+id;
+        System.out.println(sql);
         bazaUpdate(sql);
     }
     @SneakyThrows
@@ -65,6 +73,10 @@ public class Pracownik {
     private String bazaUpdate(String sql) throws SQLException, JSONException {
         JDBC.update(sql);
         return "Wykonano";
+    }
+
+    public void deleteKierownik() {
+        this.kierownik = new Kierownik(0,"Brak","Brak","Brak", "Brak");;//PRACOWNIK
     }
 
     @Override
