@@ -193,68 +193,68 @@ INSERT INTO Uzytkownik Values (uzytkownicyID.nextVal,'imie100','nazwisko100','6'
     start with 1
     increment by 1;
 
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'0','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'2','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'3','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'5','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'6','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'8','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'9','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'10','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'11','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'17','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'18','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'19','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'22','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'23','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'25','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'26','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'27','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'30','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'32','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'33','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'35','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'36','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'38','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'40','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'44','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'45','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'46','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'47','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'48','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'51','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'53','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'55','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'56','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'60','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'61','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'62','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'63','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'64','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'66','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'67','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'69','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'70','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'72','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'73','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'74','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'75','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'76','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'78','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'79','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'80','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'81','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'84','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'85','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'86','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'87','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'89','1','Wolny');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'91','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'92','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'94','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'96','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'97','1','Zajety');
-INSERT INTO Pracownik Values (pracownicyID.nextVal,'98','1','Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'1',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'2',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'3',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'5',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'6',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'8',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'9',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'10',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'11',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'17',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'18',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'19',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'22',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'23',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'25',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'26',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'27',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'30',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'32',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'33',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'35',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'36',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'38',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'40',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'44',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'45',11,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'46',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'47',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'48',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'51',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'53',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'55',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'56',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'60',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'61',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'62',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'63',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'64',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'66',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'67',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'69',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'70',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'72',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'73',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'74',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'75',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'76',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'78',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'79',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'80',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'81',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'84',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'85',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'86',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'87',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'89',null,'Wolny');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'91',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'92',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'94',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'96',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'97',null,'Zajety');
+INSERT INTO Pracownik Values (pracownicyID.nextVal,'98',null,'Wolny');
 ---
 Drop sequence ZlecenieID;
 Create sequence ZlecenieID
@@ -276,7 +276,26 @@ INSERT INTO Zlecenie Values (ZlecenieID.nextVal,'66','2022-9-11','ul. Poznańska
 INSERT INTO Zlecenie Values (ZlecenieID.nextVal,'67','2022-9-12','ul. Wrocławska 22, 50-001 Wrocław','odrzucony','13455','1');
 INSERT INTO Zlecenie Values (ZlecenieID.nextVal,'81','2022-9-10','ul. Lubelska 72, 20-001 Lublin','zakonczony','20434','4');
 
+---
+Drop sequence kontrahenciID;
+Create sequence kontrahenciID
+minvalue 0
+start with 1
+increment by 1;
 
-
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'1','Państwowa Straż Pożarna');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'4','Miasto Kielce');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'23','Gmina Daleszyce');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'24','Gmina Górno');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'28','Narodowa Straż Leśna');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'32','Koleje Państwowe');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'41','Miasto Kraków');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'53','Przedsiębiorstwo Energetyczne');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'58','Państwowa Straż Pożarna');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'64','Miasto Kielce');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'66','Gmina Daleszyce');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'67','Gmina Górno');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'81','Narodowa Straż Leśna');
+INSERT INTO Kontrahent Values (kontrahenciID.nextVal,'100','Koleje Państwowe');
 
 
