@@ -1,14 +1,9 @@
-# PIP_Projekt_-M_-S_TF
+Aplikacja podejmuje temat zarządzania zamawianiem/produkcją wozów strażackich. Zgodnie z tabelą wymagań obejmuje on takie rzeczy jak:
 
-###MARIUSZ###
--Zgłoszenie awarii
--Dodanie zadania pracownikowi
--Przyjęcie zamówienia na wóz strażacki
-###SZYMEK###
--Zamów Wóz
--Przyjęcie zgłoszenia konserwacji pojazdu
--Zamów części
-###FILIP###
--Wykonaj zadanie
--Anulowanie zadania pracownikowi
--Konserwacja wozu
+Klasy odpowiedzialne za model
+Testy jednostkowe
+Graficzny interfejs
+Połączenie z bazą danych Oracle
+Wzorce projektowe (metoda fabrykująca, singleton, fasada)
+Testy wzorców jednostkowych
+Połączenie klient-serwer
