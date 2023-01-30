@@ -1,0 +1,185 @@
+<html>
+
+<head>
+  <link href="styles.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@500&display=swap" rel="stylesheet">
+  <title>FireApp | Zlecenia</title>
+  <link rel="icon" href="assets/icon.png">
+</head>
+
+<body>
+<div class="TopBar">
+  <div class="logo">
+    <img src="assets/logo.png" style="height: 5em; padding-bottom: 1em" alt="FireApp">
+
+  </div>
+  <div class="leftBar">
+    <!-- GUZIK PIERWSZY -->
+    <div class="navTab">
+      <a href="home.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> HOME </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK DRUGI -->
+    <div class="navTab">
+      <a href="zadania.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> ZADANIA </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK TRZECI -->
+    <div class="navTab">
+      <a href="zlecenia.html">
+        <div class="buttonLeftActive">
+          <div class="buttonDescIcon"> ZLECENIA </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK CZWARTY -->
+
+    <!-- GUZIK PIATY -->
+    <div class="navTab">
+      <a href="pracownicy.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> PRACOWNICY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK SZÓSTY -->
+    <div class="navTab">
+      <a href="pojazdy.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> POJAZDY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK SIÓDMY -->
+    <div class="navTab">
+      <a href="kierownicy.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> KIEROWNICY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK ÓSMY -->
+    <div class="navTab">
+      <a href="zespoly.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> ZESPOŁY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK LOGOUT -->
+    <div class="navTab">
+      <a href="index.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> WYLOGUJ </div>
+        </div>
+      </a>
+    </div>
+    <!-- koniec guzikow -->
+  </div>
+</div>
+
+<div class="MainSpace">
+
+
+  <h1>Dodaj Zlecenie</h1>
+  <div id="response"></div>
+  <div id="wyb"></div>
+</div>
+<script>
+  let check=false;
+  if(check !=true)
+  {
+    fetch('http://localhost:8081/Zlecenie/GetData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+            .then(response => response.json())
+            .then(data => {
+              var list = '<table>' +
+                      '<tr>' +
+                      '<th><h2> Utwórz Zlecenie </h2></th><th></th>' +
+                      '</tr>' +
+                      '<tr>' +
+                      '<td class="f1_text">Wybierz kontrahenta  </td>\n' +
+                      '<td>';
+
+              list += '<select id="kontrahent" class="f1 f_blackText" >';
+              for (var i = 1; i < data.data[0].kontrahenci.length; i++) {
+                list += ' <option value="'+data.data[0].kontrahenci[i].kontrahentid+'">'+
+                        data.data[0].kontrahenci[i].nazwa+'</option>';
+              }
+              list += "</select> <br/>";
+
+              list+=  '</td>' +
+                      '</tr>' +
+                      '<td class="f1_text">Adres</td>' +
+                      '<td> <input class="f1" id="adres" type="text"  name="adres"></td>' +
+                      '</tr>' +
+                      '<tr>' +
+                      '<td class="f1_text">Cena </td>' +
+                      '<td> <input class="f1" id="price" placeholder="1.0" min="0" type="number" step="0.01"  name="price" > </td>\n' +
+                      '</tr>' +
+                      '<tr>' +
+                      '<td class="f1_text">Wybierz rodzaj wozu </td>' +
+                      '<td>';
+              list += '<select id="rodzajPojazd" class="f1 f_blackText" >'
+              for (var i = 0; i < data.data[1].rodzajePojazdow.length; i++) {
+                list += ' <option value="'+data.data[1].rodzajePojazdow[i].rodzajpojazduid+'">' +
+                        data.data[1].rodzajePojazdow[i].nazwa+'</option>';
+              }
+              list += '</select>'
+
+
+              list  +='</td>' +
+                      '</tr>' +
+                      '</table>';
+
+              list  +='<button onclick="test()" style="background-color: #238636; padding: 15px; cursor: url(sword.ani), auto;">Dodaj Zlecenie </button><br>';
+              document.getElementById("wyb").innerHTML = list;
+            });
+  }
+
+  function test()
+  {
+    var kselect = document.getElementById("kontrahent");
+    var kselectedValue = kselect.options[kselect.selectedIndex].value;
+
+    var pselect = document.getElementById("rodzajPojazd");
+    var pselectedValue = pselect.options[kselect.selectedIndex].value;
+    let data = {
+      kId : kselectedValue,
+      adres : document.getElementById("adres").value,
+      cena : document.getElementById("price").value,
+      rPojazdu: pselectedValue
+    }
+    let validateData = JSON.stringify(data);
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'data': validateData
+      },
+      body: validateData,
+    }
+    fetch('http://localhost:8081/Zlecenie/Insert/'+validateData, options)
+            .then(response => response.json())
+            .then(redata => {
+              alert(redata.Status);
+              check=true;
+            })
+            .catch(error => {
+              console.error(error);
+            });
+  }
+</script>
+</body>
+
+</html>
