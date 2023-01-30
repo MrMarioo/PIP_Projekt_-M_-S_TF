@@ -1,0 +1,174 @@
+<html>
+
+<head>
+  <link href="styles.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@500&display=swap" rel="stylesheet">
+  <title>FireApp | Kierownicy</title>
+  <link rel="icon" href="assets/icon.png">
+</head>
+
+<body>
+<div class="TopBar">
+  <div class="logo">
+    <img src="assets/logo.png" style="height: 5em; padding-bottom: 1em" alt="FireApp">
+
+  </div>
+  <div class="leftBar">
+    <!-- GUZIK PIERWSZY -->
+    <div class="navTab">
+      <a href="home.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> HOME </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK DRUGI -->
+    <div class="navTab">
+      <a href="zadania.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> ZADANIA </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK TRZECI -->
+    <div class="navTab">
+      <a href="zlecenia.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> ZLECENIA </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK CZWARTY -->
+
+    <!-- GUZIK PIATY -->
+    <div class="navTab">
+      <a href="pracownicy.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> PRACOWNICY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK SZÓSTY -->
+    <div class="navTab">
+      <a href="pojazdy.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> POJAZDY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK SIÓDMY -->
+    <div class="navTab">
+      <a href="kierownicy.html">
+        <div class="buttonLeftActive">
+          <div class="buttonDescIcon"> KIEROWNICY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK ÓSMY -->
+    <div class="navTab">
+      <a href="zespoly.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> ZESPOŁY </div>
+        </div>
+      </a>
+    </div>
+    <!-- GUZIK LOGOUT -->
+    <div class="navTab">
+      <a href="index.html">
+        <div class="buttonLeft">
+          <div class="buttonDescIcon"> WYLOGUJ </div>
+        </div>
+      </a>
+    </div>
+    <!-- koniec guzikow -->
+  </div>
+</div>
+
+<div class="MainSpace">
+  <h1>KIEROWNIK</h1>
+  <div id="response"></div>
+</div>
+
+<script>
+  window.onload = function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    fetch('http://localhost:8081/Kierownik/'+id, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+            .then(response => response.json())
+            .then(data => {
+              var table = "<table><tr>" +
+                      "<th>ID</th><" +
+                      "th>Imie</th>" +
+                      "<th>Nazwisko</th>" +
+                      "<th>Typ</th>" +
+                      "<th>Status</th>" +
+                      "<th></th>" +
+                      "</tr>";
+
+              table += "<tr>" +
+                      "<td>" + data.pracownikid + "</td>" +
+                      "<td>" + data.imie + "</td>" +
+                      "<td>" + data.nazwisko + "</td>" +
+                      "<td>" + data.typ + "</td>" +
+                      "<td>" + data.status + "</td>";
+              if(data.status!="Zwolniony")
+                table +="<td><button onclick=\"usun()\">Usun</button></td>";
+              table +="</tr>";
+
+              table += "</table><br>";
+              if(data.status!="Zwolniony") {
+                table += "<button onClick=\"Update('Imie')\">Zmień Imie</button>&emsp;";
+                table += "<button onClick=\"Update('Nazwisko')\">Zmień Nazwisko</button>&emsp;";
+              }
+              document.getElementById("response").innerHTML = table;
+            });
+  };
+  function usun(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    var status;
+    fetch('http://localhost:8081/Kierownik/Usun/' + id, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+            .then(response => response.json())
+            .then(data => {
+              status = data['Status'];
+              if(status === "Deleted")
+                window.location.assign("Kierownik.html?id="+id);
+            });
+  };
+
+  function Update(label) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    if (label == 'Imie' || label == 'Nazwisko') {
+      let promp = prompt("Wprowadź Dane", "Tekst");
+      if (promp != null) {
+        fetch('http://localhost:8081/Kierownik/Update/' + id + '/' + promp + '/' + label, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+                .then(response => response.json())
+                .then(data => {
+                  status = data['Status'];
+                  if (status === "Updated")
+                    location.reload();
+                });
+      }
+    }
+  };
+
+</script>
+</body>
+
+</html>
