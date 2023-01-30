@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@500&display=swap" rel="stylesheet">
+    <title>FireApp | Zespoły</title>
+    <link rel="icon" href="assets/icon.png">
+</head>
+
+<body>
+    <div class="TopBar">
+        <div class="logo">
+            <img src="assets/logo.png" style="height: 5em; padding-bottom: 1em" alt="FireApp">
+
+        </div>
+        <div class="leftBar">
+            <!-- GUZIK PIERWSZY -->
+            <div class="navTab">
+                <a href="home.html">
+                    <div class="buttonLeft">
+                        <div class="buttonDescIcon"> HOME </div>
+                    </div>
+                </a>
+            </div>
+            <!-- GUZIK DRUGI -->
+            <div class="navTab">
+                <a href="zadania.html">
+                    <div class="buttonLeft">
+                        <div class="buttonDescIcon"> ZADANIA </div>
+                    </div>
+                </a>
+            </div>
+            <!-- GUZIK TRZECI -->
+            <div class="navTab">
+                <a href="zlecenia.html">
+                    <div class="buttonLeft">
+                        <div class="buttonDescIcon"> ZLECENIA </div>
+                    </div>
+                </a>
+            </div>
+            <!-- GUZIK CZWARTY -->
+
+            <!-- GUZIK PIATY -->
+            <div class="navTab">
+                <a href="pracownicy.html">
+                    <div class="buttonLeft">
+                        <div class="buttonDescIcon"> PRACOWNICY </div>
+                    </div>
+                </a>
+            </div>
+            <!-- GUZIK SZÓSTY -->
+            <div class="navTab">
+                <a href="pojazdy.html">
+                    <div class="buttonLeft">
+                        <div class="buttonDescIcon"> POJAZDY </div>
+                    </div>
+                </a>
+            </div>
+            <!-- GUZIK SIÓDMY -->
+            <div class="navTab">
+                <a href="kierownicy.html">
+                    <div class="buttonLeft">
+                        <div class="buttonDescIcon"> KIEROWNICY </div>
+                    </div>
+                </a>
+            </div>
+            <!-- GUZIK ÓSMY -->
+            <div class="navTab">
+                <a href="zespoly.html">
+                    <div class="buttonLeftActive">
+                        <div class="buttonDescIcon"> ZESPOŁY </div>
+                    </div>
+                </a>
+            </div>
+            <!-- GUZIK LOGOUT -->
+            <div class="navTab">
+                <a href="index.html">
+                    <div class="buttonLeft">
+                        <div class="buttonDescIcon"> WYLOGUJ </div>
+                    </div>
+                </a>
+            </div>
+            <!-- koniec guzikow -->
+        </div>
+    </div>
+
+    <div class="MainSpace">
+        <h1>ZESPOŁY</h1>
+        <div id="response"></div>
+    </div>
+
+
+    <script>
+        window.onload = function(){
+            fetch('http://localhost:8081/Zespoły', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var table = "";
+                    var nr = 0;
+                    for (var i = 0; i < data.zespoly.length; i++) {
+                        if (data.zespoly[i].typ == 'Kierownik') {
+                            nr+=1;
+                            if(i>0)
+                                table += "</table><br>";
+                            table += "<h2>Zespół "+nr+"</h2>";
+                            table += "<table><tr><th>ID</th><th>Imie</th><th>Nazwisko</th><th>Typ</th><th></th>";
+                            table += "<tr><td>" + data.zespoly[i].pracownikid + "</td><td>" + data.zespoly[i].imie + "</td>" +
+                                "<td>" + data.zespoly[i].nazwisko + "</td><td>" + data.zespoly[i].typ + "</td>" +
+                                "<td><button onclick='location.href=`./Kierownik.html?id=" + data.zespoly[i].pracownikid + "`'>Szczegóły</button></td></tr>";
+                        }
+                        if (data.zespoly[i].typ != 'Kierownik') {
+
+                            table += "<tr><td>" + data.zespoly[i].pracownikid + "</td><td>" + data.zespoly[i].imie + "</td>" +
+                                "<td>" + data.zespoly[i].nazwisko + "</td><td>" + data.zespoly[i].typ + "</td>" +
+                                "<td><button onclick='location.href=`./Pracownik.html?id=" + data.zespoly[i].pracownikid + "`'>Szczegóły</button></td></tr>";
+                        }
+                    }
+                    table += "</table>";
+
+                    document.getElementById("response").innerHTML = table;
+                });
+        };
+    </script>
+</body>
+
+</html>
